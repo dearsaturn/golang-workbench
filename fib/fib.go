@@ -18,14 +18,13 @@ func main() {
 	fmt.Println(<-receiver)
 }
 
-// pitfall: this is an int32. large n causes overflow.
 func fib(n int, receiver chan int) {
 	previous, result := -1, 1
+
 	for i := 0; i < n; i++ {
-		sum := result + previous
-		previous = result
-		result = sum
+		previous, result = result, result+previous
 	}
 
 	receiver <- result
+	close(receiver)
 }
