@@ -1,19 +1,7 @@
-package main
+package fib
 
-import (
-	"fmt"
-	"os"
-	"strconv"
-)
-
-func main() {
-	n, err := strconv.Atoi(os.Args[1])
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(<-fib(n))
+func Fib(n int) int {
+	return <-fib(n)
 }
 
 func fib(n int) (result_chan chan int) {
