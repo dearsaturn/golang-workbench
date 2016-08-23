@@ -1,11 +1,14 @@
-package fib
+package fib_test
 
-import "testing"
+import (
+	. "public/fib"
 
-func TestFib(t *testing.T) {
-	want, got := 2, Fib(4)
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+)
 
-	if want != got {
-		t.Error("Expected 2, got", got)
-	}
-}
+var _ = Describe("Fib", func() {
+	It("Gives the nth fibonacci number", func() {
+		Expect(Fib(4)).To(Equal(2))
+	})
+})
